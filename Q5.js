@@ -12,13 +12,21 @@ const cartItems = [
 
 
 // a) Calculate the total cost of all items
-let total = cartItems.reduce((a, b) => a + b.price,0);
-console.log(total);
+let totalCost = cartItems.reduce((a, b) => a + b.price*b.quantity,0);
+console.log(totalCost);
 
 // b) Find the most expensive single item
-let exp = cartItems.filter((e) => e.price )
-
+let exp = cartItems.reduce((a,b) =>  a.price > b.price? a:b );
+console.log(exp);
 
 // c) Count the total number of items in the cart
+let totalItems = cartItems.reduce((a,b) => a + b.quantity, 0);
+console.log(totalItems); 
+
 // d) Create a summary object with totalItems, totalCost, and averageItemPrice
+let summary = {totalItems: `${totalItems}`, totalCost: `${totalCost}`, AveragePrice: `${(totalCost / totalItems).toFixed(2)}`};
+console.log(summary);
+
 // e) Find the item with the highest total value (price × quantity)
+let highVal = cartItems.reduce((a,b) =>  a.price*a.quantity > b.price*a.quantity? a:b );
+console.log(highVal);
