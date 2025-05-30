@@ -16,7 +16,13 @@ let totalCost = cartItems.reduce((a, b) => a + b.price*b.quantity,0);
 console.log(totalCost);
 
 // b) Find the most expensive single item
-let exp = cartItems.reduce((a,b) =>  a.price > b.price? a:b );
+let exp = cartItems.reduce((a, b) => {
+  if (a.price > b.price) {
+    return a;
+} else {
+    return b;
+}
+});
 console.log(exp);
 
 // c) Count the total number of items in the cart
@@ -28,5 +34,11 @@ let summary = {totalItems: `${totalItems}`, totalCost: `${totalCost}`, AveragePr
 console.log(summary);
 
 // e) Find the item with the highest total value (price × quantity)
-let highVal = cartItems.reduce((a,b) =>  a.price*a.quantity > b.price*a.quantity? a:b );
+let highVal = cartItems.reduce((a, b) => { 
+  if (a.price*a.quantity > b.price*a.quantity) {
+    return a;
+} else {
+    return b;
+}
+} );
 console.log(highVal);
